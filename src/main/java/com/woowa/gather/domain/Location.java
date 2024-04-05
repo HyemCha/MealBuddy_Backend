@@ -15,7 +15,9 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @OneToOne(mappedBy = "location",fetch = FetchType.LAZY)
+    private Post post;
     private String place;
     private Point point;
     private String address;

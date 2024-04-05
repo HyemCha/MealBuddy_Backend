@@ -24,11 +24,11 @@ public class Post extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
     private Location location;
     private int participantTotal;
@@ -48,4 +48,8 @@ public class Post extends BaseEntity {
     private List<Ask> asks = new ArrayList<>();
     private LocalDateTime meetAt;
     private LocalDateTime closeAt;
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
